@@ -1,0 +1,158 @@
+:root{
+    --background-purple: rgba(223, 209, 2555, 1);
+    --headline-text: rgba(118, 121, 189, 1);
+    --light-blue: rgba(194, 227, 255, 1);
+    --outline-purple: rgba(153, 155, 217, 1);
+    --white: rgba(255, 255, 255, 1);
+
+}
+
+/* Typography*/
+header {
+  background-color: var(--background-purple);
+  height: 72px;
+  width: 400px;
+  border: 3px solid var(--outline-purple); /* optional, matches screenshot */
+  border-radius: 12px;
+  margin: 0 auto; /* center on page */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1{
+    font-family: "VT323", monospace;
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--headline-text);
+    text-align: center;
+}
+
+h2{
+    font-family: Pixelify Sans;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--headline-text);
+    text-align: center;
+}
+
+#weather-container {
+  width: 400px;
+  height: 388px;
+  background-size: 400px 388px;  /* exact size */
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 3px solid var(--outline-purple);
+  border-radius: 20px;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Day / Night backgrounds */
+body.day #weather-container {
+  background-image: url("./assets/Day-bg.jpg");
+}
+
+body.night #weather-container {
+  background-image: url("./assets/Night-bg.jpg");
+}
+
+#weather-animation {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Chopper sprite animation */
+#chopper {
+  width: 250px;
+  height: 250px; /* fixed box so background fits */
+  margin: 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: chopperTilt 2s infinite steps(1);
+}
+
+@keyframes chopperTilt {
+  0%   { background-image: url("./assets/chopper-1.png"); }
+  33%  { background-image: url("./assets/chopper-2.png"); }
+  66%  { background-image: url("./assets/chopper-3.png"); }
+  100% { background-image: url("./assets/chopper-1.png"); }
+}
+
+
+/* Bubble directly under Chopper */
+#weather-bubble {
+  margin-top: -52px;  /* reduce spacing */
+  background: var(--white);
+  border: 3px solid var(--outline-purple);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  display: flex;              /* ✅ enables vertical centering */
+  align-items: center;        /* ✅ center text vertically */
+  justify-content: center;    /* ✅ center text horizontally */
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--headline-text);
+  text-align: center;
+  min-width: 258px;
+  height: 30px;
+}
+
+/* Remove extra margins */
+#weather-bubble p {
+  margin: 0;
+}
+
+/* Decorative stars INSIDE the bubble */
+#weather-bubble::before,
+#weather-bubble::after {
+  content: "★";
+  position: absolute;
+  color: #FFE599;
+  font-size: 2rem;
+  text-shadow: 0 0 6px rgba(255, 217, 102, 0.8),
+               0 0 12px rgba(255, 217, 102, 0.6);
+}
+
+#weather-bubble::before {
+  top: 176px;     /* inside top-left corner */
+  left: 12px;
+
+}
+
+#weather-bubble::after {
+  bottom: -15px;  /* inside bottom-right corner */
+  right: 12px;
+
+}
+
+
+header, 
+#weather-container {
+  border-radius: 0;  /* no curves */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: none;  /* so background only comes from weather-container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 🚀 no scrollbars */
+}

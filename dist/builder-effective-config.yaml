@@ -1,0 +1,16 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.example.weatherapp
+productName: Weather App
+files:
+  - filter:
+      - '**/*'
+mac:
+  category: public.app-category.weather
+win:
+  target: nsis
+  signAndEditExecutable: false
+linux:
+  target: AppImage
+electronVersion: 38.0.0

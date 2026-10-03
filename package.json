@@ -1,0 +1,41 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "A minimal Electron weather app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "keywords": [
+    "Electron",
+    "weather",
+    "demo"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.example.weatherapp",
+    "productName": "Weather App",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.weather"
+    },
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
